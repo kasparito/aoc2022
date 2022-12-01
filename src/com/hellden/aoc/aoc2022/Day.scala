@@ -5,7 +5,7 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.Duration
 import scala.io.Source
 
-private abstract class Base(day: Int) {
+private abstract class Day(day: Int) {
 
   implicit class FutureWrapper[T](f: Future[T]) {
     def await: T = Await.result(f, Duration.Inf)
