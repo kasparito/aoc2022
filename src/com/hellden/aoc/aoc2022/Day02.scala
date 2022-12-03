@@ -4,7 +4,7 @@ import scala.collection.mutable
 
 object Day02 extends Day(2):
 
-  override def part1: Int =
+  override def part1: Int = // 10595
     val value = IndexedSeq(
       "B X",
       "C Y",
@@ -18,7 +18,7 @@ object Day02 extends Day(2):
     )
     inputLines.map(value.indexOf(_) + 1).sum
 
-  override def part2: Int =
+  override def part2: Int = // 9541
     val value = IndexedSeq(
       "B X",
       "C X",

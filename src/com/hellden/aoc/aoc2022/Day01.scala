@@ -15,8 +15,8 @@ object Day01 extends Day(1):
         .sum)
     builder.result()
 
-  override def part1: Long =
+  override def part1: Long = // 66306
     elvesCalories.max
 
-  override def part2: Long =
+  override def part2: Long = // 195292
     elvesCalories.sorted.takeRight(3).sum
