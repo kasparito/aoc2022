@@ -5,17 +5,6 @@ import scala.collection.mutable
 
 object Day08 extends Day(8):
 
-  case class Position(x: Int, y: Int)
-
-  enum Direction(val dx: Int, val dy: Int):
-    case Up extends Direction(0, -1)
-    case Down extends Direction(0, 1)
-    case Left extends Direction(-1, 0)
-    case Right extends Direction(1, 0)
-
-    def move(position: Position): Position =
-      Position(position.x + dx, position.y + dy)
-
   class Map[T](grid: IndexedSeq[IndexedSeq[T]]):
     val horizontalBounds: Range = 0 until inputLines.map(_.length).max
     val verticalBounds: Range = inputLines.indices

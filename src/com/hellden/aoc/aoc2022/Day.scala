@@ -7,6 +7,17 @@ import scala.io.Source
 
 private abstract class Day(day: Int) {
 
+  case class Position(x: Int, y: Int)
+
+  enum Direction(val dx: Int, val dy: Int):
+    case Up extends Direction(0, -1)
+    case Down extends Direction(0, 1)
+    case Left extends Direction(-1, 0)
+    case Right extends Direction(1, 0)
+
+    def move(position: Position): Position =
+      Position(position.x + dx, position.y + dy)
+
   implicit class FutureWrapper[T](f: Future[T]) {
     def await: T = Await.result(f, Duration.Inf)
   }
