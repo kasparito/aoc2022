@@ -5,22 +5,8 @@ import scala.collection.mutable
 
 object Day08 extends Day(8):
 
-  class Map[T](grid: IndexedSeq[IndexedSeq[T]]):
-    val horizontalBounds: Range = 0 until inputLines.map(_.length).max
-    val verticalBounds: Range = inputLines.indices
-
-    def move(position: Position, direction: Direction): Option[Position] =
-      val x = position.x + direction.dx
-      val y = position.y + direction.dy
-      Option.when(horizontalBounds.contains(x) && verticalBounds.contains(y)) {
-        Position(x, y)
-      }
-
-    def valueFor(position: Position): T =
-      grid(position.y)(position.x)
-
   object Forest:
-    val map = new Map(inputLines.map(_.map(_.toString.toInt).toIndexedSeq).toIndexedSeq)
+    val map = new Grid(inputLines.map(_.map(_.toString.toInt).toIndexedSeq).toIndexedSeq)
 
     def positions: Iterable[Position] =
       for
@@ -67,5 +53,5 @@ object Day08 extends Day(8):
   override def part1: Long = // 1688
     Forest.positions.count(Forest.visible)
 
-  override def part2: Long = // ???
+  override def part2: Long = // 410400
     Forest.positions.map(Forest.scenicScore).max
